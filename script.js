@@ -35,31 +35,38 @@ function start(){
         elapsedTime = Date.now() - startTime;
         print(timeToString(elapsedTime));
     }, 10);
-    
     showButton("STOP");
+    if (count == 11){
+        location.reload();
+    }
+    
 }
 
 function stop(){
     timeTab.push(elapsedTime);
-    console.log(timeTab)
     clearInterval(timerInterval);
     print("OO:00:00");
     showButton("PLAY");
+    item4 = document.querySelector(".item4")
+    let item41 = document.createElement("div");
     let lanterne = document.createElement("div");
-    let counter = document.createElement("span");
-    let label = document.createElement("span");
+    let label = document.createElement("div");
+    item41.classList.add("div41")
     lanterne.classList.add("lanterne");
+    label.classList.add("label");
+    console.log(lanterne);
     let stopTime = timeToString(elapsedTime);
     label.innerHTML = stopTime;
-    lanterne.append(count);
-    lanternes.append(lanterne);
-    lanternes.append(label);
+    item4.appendChild(item41);
+    item41.appendChild(lanterne);
+    item41.appendChild(label)
+    lanterne.innerHTML = count;
+    // lanterne.appendChild(label);
     count = count+1;
     if (count == 11) {
-        let avg = averageTime(timeTab);
-        let avgerageLabel = document.createElement("div");
-        lanternes.append(avgerageLabel)
-        console.log(timeToString(avg));
+        let avg = timeToString(averageTime(timeTab));
+        avg_div = document.getElementById("display_avg");
+        avg_div.innerHTML = avg
     }
     elapsedTime = 0;
 }
@@ -79,7 +86,7 @@ function showButton(buttonKey) {
     const buttonToHide = buttonKey === "PLAY" ? stopButton : playButton;
     buttonToHide.style.display = "none";
     buttonToShow.style.display = "block";
-    let lanternes = document.getElementById("lanternes");
+    //let lanternes = document.getElementById("lanternes");
 }
 
 
