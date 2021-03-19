@@ -29,8 +29,8 @@ body {
 .container {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 150px 50px 200px 150px;
+  grid-template-columns: repeat(auto-fill, minmax(250px));
+  grid-template-rows: 100px 50px 150px 50px auto 150px;
 }
 
 .item {
@@ -54,6 +54,14 @@ span {
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
   grid-auto-flow: column;
+}
+
+.item11 {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 100;
+  margin-right: 20px;
+  /* grid-auto-flow: row; */
 }
 
 .pink {
@@ -112,6 +120,11 @@ button {
   grid-auto-flow: column;
 }
 
+/* .item4 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
 
 .lanterne {
   display: grid;

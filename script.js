@@ -3,6 +3,7 @@ let elapsedTime = 0;
 let timerInterval;
 let count = 1;
 let timeTab = [];
+let endTime;
 
 function timeToString(time){
     let hours = time/3600000;
@@ -43,6 +44,8 @@ function start(){
 }
 
 function stop(){
+    endTime = Date.now()-startTime;
+    console.log(endTime);
     timeTab.push(elapsedTime);
     clearInterval(timerInterval);
     print("OO:00:00");
@@ -54,20 +57,18 @@ function stop(){
     item41.classList.add("div41")
     lanterne.classList.add("lanterne");
     label.classList.add("label");
-    console.log(lanterne);
     let stopTime = timeToString(elapsedTime);
     label.innerHTML = stopTime;
     item4.appendChild(item41);
     item41.appendChild(lanterne);
     item41.appendChild(label)
     lanterne.innerHTML = count;
-    // lanterne.appendChild(label);
     count = count+1;
-    if (count == 11) {
-        let avg = timeToString(averageTime(timeTab));
-        avg_div = document.getElementById("display_avg");
-        avg_div.innerHTML = avg
-    }
+    
+    let avg = timeToString(averageTime(timeTab));
+    avg_div = document.getElementById("display_avg");
+    avg_div.innerHTML = avg;
+    
     elapsedTime = 0;
 }
 
@@ -88,7 +89,6 @@ function showButton(buttonKey) {
     buttonToShow.style.display = "block";
     //let lanternes = document.getElementById("lanternes");
 }
-
 
 let playButton = document.getElementById("playButton")
 let stopButton = document.getElementById("stopButton")
